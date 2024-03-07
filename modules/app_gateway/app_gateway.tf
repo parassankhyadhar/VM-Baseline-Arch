@@ -58,4 +58,9 @@ resource "azurerm_application_gateway" "app-gateway" {
     name = var.sku.name
     tier = var.sku.tier
   }
+  waf_configuration {
+    enabled          = var.waf_configuration.enabled
+    firewall_mode    = var.waf_configuration.firewall_mode
+    rule_set_version = var.waf_configuration.rule_set_version
+  }
 }

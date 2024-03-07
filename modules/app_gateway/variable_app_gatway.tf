@@ -82,3 +82,12 @@ variable "sku" {
   })
 }
 
+variable "waf_configuration" {
+  description = "value"
+  type = object({
+    enabled          = bool
+    firewall_mode    = string
+    rule_set_version = string
+  })
+}
+
