@@ -9,7 +9,7 @@ resource "azurerm_application_gateway" "app-gateway" {
     }
   }
   dynamic "backend_http_settings" {
-    for_each = var.backend_address_pool
+    for_each = var.backend_http_settings
     content {
       cookie_based_affinity = backend_http_settings.value.cookie_based_affinity
       name                  = backend_http_settings.value.name
@@ -57,5 +57,10 @@ resource "azurerm_application_gateway" "app-gateway" {
   sku {
     name = var.sku.name
     tier = var.sku.tier
+  }
+  waf_configuration {
+    enabled          = var.waf_configuration.enabled
+    firewall_mode    = var.waf_configuration.firewall_mode
+    rule_set_version = var.waf_configuration.rule_set_version
   }
 }
