@@ -9,7 +9,7 @@ resource "azurerm_application_gateway" "app-gateway" {
     }
   }
   dynamic "backend_http_settings" {
-    for_each = var.backend_address_pool
+    for_each = var.backend_http_settings
     content {
       cookie_based_affinity = backend_http_settings.value.cookie_based_affinity
       name                  = backend_http_settings.value.name
